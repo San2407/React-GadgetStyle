@@ -1,13 +1,15 @@
-import Navbar from "./components/layout/Navbar"
-import ItemListContainer from "./components/pages/ItemListContainer"
+import ItemCountContainer from "./components/common/ItemCount/ItemCountContainer";
+import Navbar from "./components/layout/Navbar";
+import ItemListContainer from "./components/pages/ItemListContainer";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      <ItemListContainer greeting={"Productos"}/>
-    </div>
-  )
+      <ItemListContainer greeting={"Productos"} />
+      <ItemCountContainer />
+    </>
+  );
 }
 
-export default App
+export default App;
