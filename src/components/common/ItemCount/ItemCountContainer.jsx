@@ -1,11 +1,11 @@
 import { useState } from "react";
 import ItemCount from "./itemCount";
 
-const ItemCountContainer = (/* poner stock del asyncMock*/) => {
+const ItemCountContainer = ({ stock }) => {
   const [count, setCounter] = useState(1);
 
   const sumar = () => {
-    if (count < 5 /* poner stock del asyncMock*/) {
+    if (count < stock) {
       setCounter(count + 1);
     }
   };

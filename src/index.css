@@ -7,9 +7,9 @@
 }
 
 a {
-  color: inherit; 
-  text-decoration: none; 
-  background-color: transparent; 
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 .menu {
@@ -36,8 +36,71 @@ a {
 }
 
 .itemListContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 0.5fr);
+  gap: 10px;
+}
+
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.itemCountContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.itemCount {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+.itemCount h4 {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
   border: 1px solid #ccc;
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+}
+.buttonItemCount {
+  background-color: #f63e3d;
+  color: black;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.disabledButton {
+  background-color: #ffc8c8;
+  text: #bf1716;
+  cursor: not-allowed;
+}
+
+.buttonItemCount :hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #e3201f;
+}
+
+.buttonAddCart {
+  background-color: white;
+  color: #bf1716;
+  border: 2px solid #bf1716;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.buttonAddCart :hover {
+  background-color: #ffc8c8;
+  color: #bf1716;
+  border: 2px solid #bf1716;
 }
