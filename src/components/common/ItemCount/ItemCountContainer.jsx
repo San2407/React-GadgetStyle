@@ -7,7 +7,7 @@ const ItemCountContainer = ({ stock }) => {
   const sumar = () => {
     if (count < stock) {
       setCounter(count + 1);
-    }
+    } //agregar un else que incluya un alert o similar para avisar que se alcanzo el máximo de stock
   };
   const restar = () => {
     if (count > 1) {
