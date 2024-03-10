@@ -1,5 +1,5 @@
 import CartWidget from "../common/CartWidget";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../../public/logo.svg";
 export default function Navbar() {
   return (
@@ -19,9 +19,10 @@ export default function Navbar() {
             <Link to="/category/Fundas">Fundas</Link>
           </li>
         </ul>
-        <CartWidget />
+        <Link to="/cart">
+          <CartWidget />
+        </Link>
       </nav>
-      <Outlet />
     </>
   );
 }

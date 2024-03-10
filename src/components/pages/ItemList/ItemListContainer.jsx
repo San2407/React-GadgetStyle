@@ -3,37 +3,44 @@ import { products } from "../../../productsMock";
 import ItemList from "./ItemList";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useParams } from "react-router-dom";
+import { db } from "../../../firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const { category } = useParams();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const cargarProductos = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (products.length > 0) {
-          resolve(products);
-        } else {
-          reject("error: el array de productos esta vació");
-        }
-      }, 2000);
-    });
-    setLoading(true);
-    cargarProductos
+    //setLoading(true);
+    //let productsCollection = collection(db, "products");
+    //getDocs(productsCollection)
+    //.then((res) => {
+    //let arrayProductos = res.docs.map((element) => {
+    //return { ...element.data(), id: element.id };
+    //});
+    //setItems(arrayProductos);
+    //})
+    //.finally(() => setLoading(false));
+
+    let productsCollection = collection(db, "products");
+
+    let consulta = productsCollection;
+    if (category) {
+      let collectionFiltered = query(
+        productsCollection,
+        where("category", "==", category)
+      );
+      consulta = collectionFiltered;
+    }
+
+    getDocs(consulta)
       .then((res) => {
-        if (category) {
-          const filterProducts = res.filter(
-            (product) => product.category === category
-          );
-          setItems(filterProducts);
-        } else {
-          setItems(res);
-        }
-        setLoading(false);
+        let arrayProductos = res.docs.map((element) => {
+          return { ...element.data(), id: element.id };
+        });
+        setItems(arrayProductos);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .finally(() => setLoading(false));
   }, [category]);
 
   return (
