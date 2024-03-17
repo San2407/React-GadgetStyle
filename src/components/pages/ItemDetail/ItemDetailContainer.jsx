@@ -13,7 +13,6 @@ const ItemDetailContainer = () => {
   const { addItem, quantityById } = useContext(CartContext);
 
   const initial = quantityById(id);
-  console.log(initial);
   useEffect(() => {
     setLoading(true);
     let productsCollection = collection(db, "products");

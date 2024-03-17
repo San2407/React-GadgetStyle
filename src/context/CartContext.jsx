@@ -3,7 +3,9 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 function CartContextProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
   const isInCart = (id) => {
     let exist = cart.some((element) => element.id === id);
     return exist;
@@ -19,17 +21,21 @@ function CartContextProvider({ children }) {
         }
       });
       setCart(newQuantity);
+      localStorage.setItem("cart", JSON.stringify(newQuantity));
     } else {
       setCart([...cart, product]);
+      localStorage.setItem("cart", JSON.stringify([...cart, product]));
     }
   };
   const clear = () => {
     setCart([]);
+    localStorage.removeItem("cart");
   };
 
   const removeItem = (id) => {
     let newArray = cart.filter((element) => element.id !== id);
     setCart(newArray);
+    localStorage.setItem("cart", JSON.stringify(newArray));
   };
   const totalItems = () => {
     let total = cart.reduce((acc, element) => {
@@ -51,6 +57,7 @@ function CartContextProvider({ children }) {
       return product;
     }
   };
+  //agregar una función date que consiga la fecha del dia de hoy
   return (
     <CartContext.Provider
       value={{
