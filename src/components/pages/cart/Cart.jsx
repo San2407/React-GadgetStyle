@@ -10,7 +10,7 @@ function Cart({ cart, clear, removeItem, totalPrice }) {
   const isCartIsEmpty = cart.length === 0;
   return (
     <>
-      <div className="cartContainer">
+      <div className="carritoContainer">
         <h2>Carrito</h2>
         {isCartIsEmpty ? (
           <div className="carritoVacio">

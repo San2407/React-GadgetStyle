@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
-import { getProduct } from "../../../productsMock";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useParams } from "react-router-dom";
 import { db } from "../../../firebaseConfig";

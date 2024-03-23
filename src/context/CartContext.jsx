@@ -57,7 +57,6 @@ function CartContextProvider({ children }) {
       return product;
     }
   };
-  //agregar una función date que consiga la fecha del dia de hoy
   return (
     <CartContext.Provider
       value={{

@@ -3,24 +3,32 @@ import Checkout from "./checkout";
 import { CartContext } from "../../../context/CartContext";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
+import { FechaContext } from "../../../context/DateContext";
 function CheckoutContainer() {
   const [userInfo, setUserInfo] = useState({
     name: "",
     phone: "",
     email: "",
   });
+  const [emailConfirm, setEmailConfirm] = useState("");
   const [orderId, setOrderId] = useState(null);
   const { cart, totalPrice, clear } = useContext(CartContext);
+  const fecha = useContext(FechaContext);
   let total = totalPrice();
 
   const submitForm = (e) => {
     e.preventDefault();
-
+    if (userInfo.email !== emailConfirm) {
+      alert("Los correos electrónicos no coinciden");
+      return;
+    }
     let order = {
       buyer: userInfo,
-      items: cart,
+      items: cart.map((item) => ({
+        ...item,
+        date: fecha.toLocaleDateString(),
+      })),
       total: total,
-      //date: función date que estaría en el CartContext
     };
 
     let orderCollection = collection(db, "orders");
@@ -32,10 +40,20 @@ function CheckoutContainer() {
     clear();
   };
   const capturar = (e) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    if (e.target.name === "emailConfirm") {
+      setEmailConfirm(e.target.value);
+    } else {
+      setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    }
   };
   return (
-    <Checkout submitForm={submitForm} capturar={capturar} orderId={orderId} />
+    <Checkout
+      submitForm={submitForm}
+      capturar={capturar}
+      orderId={orderId}
+      cart={cart}
+      totalPrice={totalPrice}
+    />
   );
 }
 

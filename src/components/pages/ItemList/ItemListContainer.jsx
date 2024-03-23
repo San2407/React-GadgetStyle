@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { products } from "../../../productsMock";
 import ItemList from "./ItemList";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useParams } from "react-router-dom";
@@ -11,17 +10,6 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    //setLoading(true);
-    //let productsCollection = collection(db, "products");
-    //getDocs(productsCollection)
-    //.then((res) => {
-    //let arrayProductos = res.docs.map((element) => {
-    //return { ...element.data(), id: element.id };
-    //});
-    //setItems(arrayProductos);
-    //})
-    //.finally(() => setLoading(false));
-
     let productsCollection = collection(db, "products");
 
     let consulta = productsCollection;

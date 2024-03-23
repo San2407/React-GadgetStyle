@@ -25,7 +25,7 @@ const ItemList = ({ items }) => {
                   sx={{ objectFit: "contain", width: "100%" }}
                 />
                 <CardContent style={{ height: "150px" }}>
-                  <Typography gutterBottom variant="h5" compoment="div">
+                  <Typography gutterBottom variant="h5" component="div">
                     {item.title}
                   </Typography>
                 </CardContent>
