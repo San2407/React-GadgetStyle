@@ -1,4 +1,4 @@
-const ItemCount = ({ counter, addOne, subOne, onAdd }) => {
+const ItemCount = ({ counter, addOne, subOne, onAdd, showAlert }) => {
   const isDisabled = counter === 1;
   return (
     <div className="itemCountContainer">
@@ -16,7 +16,13 @@ const ItemCount = ({ counter, addOne, subOne, onAdd }) => {
         </button>
       </div>
 
-      <button className="buttonAddCart" onClick={() => onAdd(counter)}>
+      <button
+        className="buttonAddCart"
+        onClick={() => {
+          onAdd(counter);
+          showAlert();
+        }}
+      >
         Agregar al carrito
       </button>
     </div>

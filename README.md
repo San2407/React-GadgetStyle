@@ -7,7 +7,7 @@ GadgetStyle es un ecommerce que vende celulares y fundas. Este proyecto fue crea
 El proyecto contiene 4 páginas principales:
 
 1. **ItemList**: Muestra los productos almacenados en Firestore. Los productos se muestran en tarjetas de Material UI.
-2. **ItemDetail**: Muestra los detalles del producto seleccionado, incluyendo una imagen, una descripción, un contador (que detecta si se supera el stock del producto) y un botón para agregar el producto al carrito.
+2. **ItemDetail**: Muestra los detalles del producto seleccionado, incluyendo una imagen, una descripción, un contador (que detecta si se supera el stock del producto, haciendo que salte un alert) y un botón para agregar el producto al carrito y salta un alert que confirma que se agrego un producto al carrito.
 3. **Cart**: Renderiza una vista diferente dependiendo de si el carrito está vacío o no. Si el carrito está vacío, muestra un mensaje indicando que el carrito está vacío y proporciona un enlace para comenzar a comprar. Si el carrito no está vacío, muestra todos los artículos en el carrito, cada uno con su imagen, título, precio, cantidad, y precio total. También proporciona botones para eliminar cada artículo y para vaciar el carrito completo. Al final, muestra el precio total del carrito y proporciona un botón para finalizar la compra.
 4. **Checkout**: Gestiona la visualización de la página de pago, permitiendo al usuario ingresar sus datos de contacto, ver los artículos en su carrito y el precio total, y enviar su orden.
 
@@ -59,7 +59,7 @@ npm start
 
 ### Instalación de librerías
 
-Este proyecto utiliza varias librerías, incluyendo Material UI, Iconos de Material UI y Firestore. Aquí te dejo cómo instalarlas:
+Este proyecto utiliza varias librerías, incluyendo Material UI, Iconos de Material UI, Firestore y SweetAlert. Aquí te dejo cómo instalarlas:
 
 - Material UI:
 
@@ -79,8 +79,14 @@ npm install @mui/icons-material
 npm install firebase
 ```
 
+- SweetAlert:
+
+```bash
+npm install sweetalert2
 ```
-Por favor, ten en cuenta que estos pasos pueden variar dependiendo de tu sistema operativo. Te recomendaría revisar la documentación oficial de Node.js para obtener la información más actualizada y precisa. ¡Espero que esto te sea de ayuda!
+
+```
+Por favor, ten en cuenta que estos pasos pueden variar dependiendo de tu sistema operativo. Te recomendaría revisar la documentación oficial de las librerías para obtener la información más actualizada y precisa. ¡Espero que esto te sea de ayuda!
 ```
 
 ## Uso

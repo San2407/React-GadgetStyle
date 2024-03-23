@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { CartContext } from "../../../context/CartContext";
+
 const ItemDetailContainer = () => {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,7 @@ const ItemDetailContainer = () => {
       </div>
     );
   }
+
   return (
     <>
       <ItemDetail item={item} onAdd={onAdd} initial={initial} />

@@ -4,6 +4,7 @@ import { CartContext } from "../../../context/CartContext";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import { FechaContext } from "../../../context/DateContext";
+import Swal from "sweetalert2";
 function CheckoutContainer() {
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -19,7 +20,13 @@ function CheckoutContainer() {
   const submitForm = (e) => {
     e.preventDefault();
     if (userInfo.email !== emailConfirm) {
-      alert("Los correos electrónicos no coinciden");
+      Swal.fire({
+        title: "Error!",
+        text: "El correo electrónico no coincide",
+        icon: "error",
+        confirmButtonColor: "#e3201f",
+        confirmButtonText: "Ok",
+      });
       return;
     }
     let order = {

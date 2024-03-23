@@ -1,6 +1,6 @@
 import ItemCountContainer from "../../common/ItemCount/ItemCountContainer";
 
-const ItemDetail = ({ item, onAdd, initial }) => {
+const ItemDetail = ({ item, onAdd, initial, showAlert }) => {
   return (
     <main className="itemDetailContainer">
       <div key={item.id} className="itemDetailGrid">
@@ -16,6 +16,7 @@ const ItemDetail = ({ item, onAdd, initial }) => {
             stock={item.stock}
             onAdd={onAdd}
             initial={initial}
+            onClick={showAlert}
           />
         </div>
       </div>
