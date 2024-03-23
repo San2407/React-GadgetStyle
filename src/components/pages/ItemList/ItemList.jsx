@@ -12,26 +12,39 @@ const ItemList = ({ items }) => {
     <main className="itemListContainer">
       {items.map((item) => {
         return (
-          <Card sx={{ maxWidth: 345 }} key={item.id}>
-            <CardActionArea
-              style={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
+          <div key={item.id} className="itemListProducts">
+            <Card
+              sx={{
+                maxWidth: 345,
+                width: "100%",
+                height: "100%",
+              }}
             >
               <Link to={`/item/${item.id}`}>
-                <CardMedia
-                  component="img"
-                  height="180"
-                  image={item.img}
-                  title={item.title}
-                  sx={{ objectFit: "contain", width: "100%" }}
-                />
-                <CardContent style={{ height: "150px" }}>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {item.title}
-                  </Typography>
-                </CardContent>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={item.img}
+                    title={item.title}
+                    sx={{
+                      objectFit: "contain",
+                    }}
+                  />
+                  <CardContent sx={{ height: "150px" }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      style={{ fontSize: "25px", fontWeight: "400" }}
+                    >
+                      {item.title}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Link>
-            </CardActionArea>
-          </Card>
+            </Card>
+          </div>
         );
       })}
     </main>
